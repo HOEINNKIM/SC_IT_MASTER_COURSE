@@ -1,0 +1,34 @@
+class Example1 {
+	public static void main(String[] args) {
+
+	int a = 1;
+	while(a<=100){
+
+		if(a ==1){
+		 System.out.println(a);
+		a = a*2;
+		} else{
+		System.out.println(a);
+		a = a*2;
+		}
+	}
+
+
+
+		
+	}
+}
+
+
+
+/*	
+		for(int i = 1;i<=100; i++){
+			a = a*2;
+			
+			if(a<=100){
+			System.out.println(a);
+			i++;
+			} else {
+			break;
+			}
+*/

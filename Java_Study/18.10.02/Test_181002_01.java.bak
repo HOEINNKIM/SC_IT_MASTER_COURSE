@@ -1,0 +1,16 @@
+public class Test_181002_01 {
+	public static void main(String[] args) {
+	//int 배열 10개 생성해서 각원소값을 2배 +1 만든후 출력
+
+		int[] arr = new int[10];
+		arr[] = {1,2,3,4,5,6,7,8,9,10};
+
+		for(int i=0; i<arr.length; i++){
+			arr[i] = arr[i]*2 +1;
+		}
+
+		for(int i=0; i<arr.length; i++){
+			System.out.print(arr[i] + " ");
+		}
+	}
+}

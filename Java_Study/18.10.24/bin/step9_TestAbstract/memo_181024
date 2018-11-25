@@ -1,0 +1,31 @@
+*static*
+static은 class loading 시에 미리 메모리에 적재
+why? 객체 생성하지 않고 메모리에 적재하여 사용하기 위해(자주사용, 설정정보 미리로딩)
+how? 클래스명.변수 or메서드 (static만)
+	-> 즉, 객체생성이 필요없다! 
+static 변수 : private static int money = 1;
+static 메서드: private static void test() { ... }
+static 초기화: static { //초기화 작업}
+
+static -> non-static으로 접근 불가능 : 반드시 객체 생성을 전제로 해야한다!!
+static <- non-static으로 접근 가능, 객체생성 전 클래스 로딩시 static에 적재되어 있음
+
+*static의 활용 Singleton Design Pattern*
+시스템 상에서 특정 객체를 단 한번 생성하고 공유하고자 할 때 사용하는 설계 패턴
+
+외부에서 객체 생성하는 것을 막기 위해 생성자 앞 접근 제어자를 private으로 지정하고
+자신의 static 변수 초기화시에 단 한번 생성하게 하여 static 메서드로 공유한다.
+그러면, 외부에서는 생성할 수 없지만 단 한번 생성한 객체를 사용할 수는 있다.
+
+*abstract*
+why? 자식 클래스에게 오버라이딩을 강제하고 재사용할 수 있는 멤버를 제공
+how? abstract method 는 구현부가 없다.
+	ex) public abstract void study();
+	class 에서 하나 이상의 abstract class 가 있을 경우 그 class는
+	abstract class 로 선언되어야 한다.
+	abstract class 는 직접 객체화 될 수 없다.
+	기반 클래스로서의 역할을 한다.(재사용성을 가진 표준의 역할)
+	
+	자식 클래스에서는 abstract class 를 상속받을 경우 반드시 abstract method를
+	구현해야한다. 구현하지 않으면 자체 클래스도 abstract로 선언되어야 한다.
+	(객체 생성할 수 없는 클래스가 된다.)

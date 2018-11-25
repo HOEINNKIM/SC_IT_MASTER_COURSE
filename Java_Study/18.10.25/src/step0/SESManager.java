@@ -1,0 +1,67 @@
+﻿package step0;
+
+/**
+ * <pre>
+ * SES(Soft Engineer School) 愿由??꾨줈洹몃옩???낅Т濡쒖쭅??愿由ы븯???대옒??
+ * 二쇱슂 湲곕뒫?쇰줈???ㅼ쓬怨?媛숇떎.
+ * 1. ?좉퇋 愿由ъ씤???깅줉
+ * 2. ?깅줉?몄썝 寃??
+ * 3. ?깅줉?몄썝 ??젣
+ * 4. ?꾩껜 ?깅줉?몄썝 異쒕젰
+ * </pre>
+ * */
+public class SESManager {
+	private Human h; //愿由ъ씤??援먯닔, ?곗닔?? ?댁쁺吏? 媛앹껜瑜???ν븷 ???怨듦컙
+	
+	/**
+	 * ?덈줈??SESManager ?대옒?ㅼ쓽 媛앹껜瑜??앹꽦?쒕떎.
+	 * */
+	public SESManager(){}
+	
+	/**
+	 * ?덈줈??Human 媛앹껜瑜??깅줉?쒕떎.
+	 * @param human ?깅줉??Professor, Trainee, Staff ?대옒?ㅼ쓽 媛앹껜
+	 * */
+	public void insertHuman(Human human){
+		if(h==null) {
+			h = human;
+		}
+	}
+	
+	/**
+	 * ?깅줉??Human 媛앹껜瑜?寃?됲븳??
+	 * @param jumin 寃?됲븷 Human??二쇰?踰덊샇
+	 * @return Human 媛앹껜??媛앹껜??以??뚮씪硫뷀꽣濡??꾨떖??二쇰?踰덊샇? ?쇱튂?섎뒗 Human 媛앹껜, 寃??寃곌낵媛 ?놁쓣 ??null??諛섑솚?쒕떎.
+	 * */
+	public Human findHuman(String jumin){
+		Human find_human = null;
+		
+		if(h!=null && jumin.equals(h.getJumin())) {
+			find_human = h;
+		}
+		return find_human; 
+	}
+
+	/**
+	 * ?깅줉??Human 媛앹껜瑜???젣?쒕떎.
+	 * @param jumin ??젣??Human??二쇰?踰덊샇
+	 * @return 二쇱뼱吏?二쇰?踰덊샇? ?쇱튂?섎뒗 Human 媛앹껜????젣 寃곌낵, Human 媛앹껜??以??뚮씪硫뷀꽣濡??꾨떖??二쇰?踰덊샇? ?쇱튂?섎뒗 Human 媛앹껜媛 諛쒓껄?섏뼱 ??젣瑜??깃났?섎㈃ true瑜?洹몃젃吏 ?딆쑝硫?false瑜?諛섑솚
+	 * */
+	public boolean deleteHuman(String jumin){
+		boolean result = false;
+		
+		if(h!=null && jumin.equals(h.getJumin())) {
+			h = null;
+			result = true;
+		}
+		
+		return result;
+	}
+	
+	/**
+	 * ?깅줉??紐⑤뱺 Human 媛앹껜 ?뺣낫瑜?異쒕젰?쒕떎.
+	 * */
+	public void showAll(){
+		if(h!=null) h.showInfo();
+	}
+}

@@ -1,0 +1,13 @@
+import java.util.Random;
+
+public class Random {
+	public static void main(String[] args) {
+		System.out.println("랜덤으로 문자열 10개 출력하기");
+		Random r = new Random;
+		System.out.println(r.nextInt());
+
+	
+	
+	
+	}
+}

@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Example2 {
+	public static void main(String[] args) {
+
+		int[] intArr = new int[10];
+
+		Scanner input = new Scanner(System.in);
+		
+		for(int i=0; i<10; i++) {
+		System.out.print("등록할 도서번호를 입력하시오 : ");
+		intArr[i] = input.nextInt();
+		}
+		
+		System.out.println(intArr[0]);
+		System.out.println(intArr[1]);
+		System.out.println(intArr[2]);
+		System.out.println(intArr[3]);
+		System.out.println(intArr[4]);
+		System.out.println(intArr[5]);
+		System.out.println(intArr[6]);
+		System.out.println(intArr[7]);
+		System.out.println(intArr[8]);
+		System.out.println(intArr[9]);
+				
+
+	}
+}

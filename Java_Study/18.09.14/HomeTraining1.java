@@ -1,0 +1,14 @@
+class HomeTraining1 {
+	public static void main(String[] args) {
+
+	int x = 100;
+	int y = 200;
+	int z;
+	System.out.println("x= " + x + ", y= " + y);
+	z = x;
+	x = y;
+	y = z;
+	System.out.println("x= " + x + ", y= " + y);
+	
+	}
+}

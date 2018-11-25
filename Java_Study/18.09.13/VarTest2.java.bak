@@ -1,0 +1,39 @@
+import java.util.Scanner;
+class VarTest2 {
+	public static void main(String[] args) {
+
+	double Korean;     //평균 소수점 표시를 위해서 실수 처리
+	double English;
+	double Mathmatics;
+	
+
+	Scanner input = new Scanner(System.in);
+
+	System.out.println("국어점수 : ");
+	Korean = input.nextInt();
+	
+	System.out.println("영어점수 : ");
+	English = input.nextInt();
+	
+	System.out.println("수학점수 : ");
+	Mathmatics = input.nextInt();
+	
+	double Total = Korean + English + Mathmatics;
+
+	System.out.println("총점 : " + (int)Total);
+	System.out.println("평균 : " + Total/3); 
+
+	}
+}
+
+
+/*
+3과목의 점수를 입력받아 총점과 평균을 구해주시오.
+
+실행결과 :
+	국어점수 : 80
+	영어점수 : 90
+	수학점수 " 95
+	총점 : 265
+	평균 : 88.3333333333
+*/

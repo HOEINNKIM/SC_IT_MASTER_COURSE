@@ -1,0 +1,47 @@
+*interface*
+다중 상속의 효과
+interface는 static final 상수와 abstract 메서드만 가질 수 있다.
+상속과 재사용성, 계층구조 형성을 통한 표준화, 다형성 적용에 장점이 있고,
+인터페이스는 재사용성은 없으나, 다양한 계층구조 형성이 가능하다.
+
+상속 					VS	인터페이스
+재사용성 ㅇ          			          재사용성 x
+단일상속					다중상속
+계층구조형성 ㅇ				계층구조형성 ㅇ
+오버라이딩 강제ㅇ(abstract)	오버라이딩 강제 ㅇ
+
+인퍼테이스는 사용하는 측과 구현하는 측의 약속이라 볼 수 있습니다.
+
+상속과 implement를 함께 사용하는 경우에는 상속부터 정의한다.
+public class Bird extends Animal implements Flyer
+
+여러 개의 인터페이스를 implements 하는 경우에는 ',' 로 연결해서 정의한다.
+public class Bird extends Animal implements Flyer, Musician
+
+인터페이슦리는 상속이 가능하다.(추상메서드를 상속)
+interface A {
+	public void a();
+}
+interface B extends A {
+	public void b();
+}
+class Test implements B{
+	// a() 메서드와 b()메서드를 전부다 구현해야 한다.
+}
+
+* Exception (예외처리) *
+-keyword 
+1. try : Exception 발생 지점을 블럭
+2. catch : Exception을 처리
+3. finally : Exception 발생처리와 무관하게 항상 수행
+4. throws : 발생한 Exception을 호출한 곳으로 던진다.
+5. throw : Exception을 고의로 발생
+
+목적?
+문제발생 (Exception 발생시) 하면 Exception 발생에 대해 적절한 대처방안을 마련하고
+프로그램을 계속해서 정상 동작시키기 위해 사용한다.
+
+*** RuntimeException 계열(RuntimeException의 자식들)은,
+throws를 명시하지 않아도 Exception이 자동으로 throws된다.
+
+***사용자 정의 Exception을 만들때에는 Exception만 상속받아 만들면 된다.

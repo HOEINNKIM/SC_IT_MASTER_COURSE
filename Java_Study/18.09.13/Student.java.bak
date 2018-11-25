@@ -1,0 +1,15 @@
+class°°Student {
+
+	int age = 0;
+	String name = "";
+
+	public void setName(String newName) {
+		name = newName;
+	}
+
+	public static void main(String[] args) {
+		Student st = new Student();
+		st.setName("±Ë»∏¿Œ");
+		System.out.println("Hello World!");
+	}
+}

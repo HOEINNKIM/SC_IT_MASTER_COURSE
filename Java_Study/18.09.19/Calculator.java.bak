@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+class Calculator {
+	public static void main(String[] args) {
+
+		int a = 0;
+		int b = 0;
+		Scanner input = new Scanner(System.in);
+		
+		System.out.print("피연산자 : ");
+		a = input.nextInt();
+
+		System.out.print("  연산자 : ");
+		b = input.nextInt();
+
+		
+		System.out.println(a + " + " + b + " = " + (a+b)); 
+
+
+
+	}
+}

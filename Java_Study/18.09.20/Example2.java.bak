@@ -1,0 +1,17 @@
+class Example2 {
+	public static void main(String[] args) {
+
+
+	for(int i=1;i<=100;i*=3){
+
+			System.out.println(i);
+
+	}
+
+
+	}
+}
+
+
+
+//삼배수로 증가되는 프로그램 1000아래

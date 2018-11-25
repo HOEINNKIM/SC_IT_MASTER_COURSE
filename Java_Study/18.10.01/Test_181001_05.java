@@ -1,0 +1,83 @@
+import java.util.Scanner;
+
+public class Test_181001_05 {
+	public static void main(String[] args) {
+
+	Scanner input = new Scanner(System.in);
+	
+	int num = 0;        // 반복문 반복 기준(do-while) + 메뉴 선택기준
+	int price = 0;      // 메뉴 가격 기준
+	int coinNum = 0;    // 동전 선택 기준
+	int money = 0;      // 넣은 동전 기준
+	int drink = 500;    // 음료 가격
+	int coffee = 1000;  // 커피 가격
+	int kimbab = 1200;  // 김밥 가격
+	int melon = 1500;   // 메론 가격
+	int change = 0;     // 잔돈 기준
+
+	do {
+		System.out.println("--------자판기---------");
+		System.out.println("1. 음료수 500원");
+		System.out.println("2. 커피 1000원");
+		System.out.println("3. 삼각김밥 1200원");
+		System.out.println("4. 메론빵 1500원");
+		System.out.println("---------------------");
+		System.out.print("자판기 메뉴 선택 : ");
+		
+		num = input.nextInt();
+			if(num==1){
+				price = drink;			
+			}else if(num==2){
+				price = coffee;
+			}else if(num==3){
+				price = kimbab;
+			}else if(num==4){
+				price = melon;
+			}else if(num==0){
+				System.out.println("다시 입력하세요!");
+				num = 1;
+				continue;
+			}else {
+				System.out.println("다시 입력하세요!");			
+				continue;
+			}
+			
+		System.out.println("1. 100원짜리 투입");
+		System.out.println("2. 500원짜리 투입");
+		System.out.println("3. 1000원짜리 투입");
+		System.out.println("4. 5000원짜리 투입");
+		System.out.println("0. 되돌아가기");		
+
+			for(int i=0; ;i++){	
+				coinNum = input.nextInt();
+					
+					if(coinNum == 1){
+						money = 100;
+					} else if(coinNum ==2){
+						money = 500;
+					} else if(coinNum ==3){
+						money = 1000;
+					} else if(coinNum ==4){
+						money = 5000;
+					} else if(coinNum ==0){
+						
+						if(money!=0){
+						System.out.println(price + "원을 돌려받았습니다." + "\n");							
+						}
+						break;
+					}
+ 
+					if(price - money > 0) {
+						price = price - money;
+					} else if(price - money < 0) {
+						change = -(price - money);		
+						System.out.println(change + "원을 돌려받았습니다."+ "\n");
+						break;
+					} else {
+						System.out.println("음료수가 나왔습니다!" + "\n");
+						break;
+					}			
+			}
+		}while (num!=0);
+	}
+}

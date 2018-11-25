@@ -1,0 +1,37 @@
+public class test001 {
+	public static void main(String[] args) {
+		int[] arr = {1, 3, 4, 8, 13, 17, 20};
+		int minDistance = 0;
+		String result = null;
+
+		int a = 0;
+		int b = 0;
+		int c = 0;
+
+		for(int i = 0; i < arr.length; i++){
+			for(int j = i + 1 ; j < arr.length; j++){
+				a = arr[i];
+				b = arr[j];
+				c = a - b;								
+
+				if(c<0){
+					c *= -1;
+				} 				
+
+				if(minDistance == 0){
+					minDistance = c;				
+					result = a + "," + b;
+
+				} else {
+
+					if(c < minDistance){
+					 minDistance = c;
+						result = a + "," + b;
+					} 
+				}
+			}
+		}
+		System.out.println(result);
+	}
+}
+
