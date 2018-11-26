@@ -4,6 +4,14 @@ public class Member {
 	private String name;	//Member2의 두번째 Column : name, varchar2
 	private String password;//Member2의 세번째 Column : password, varchar2
 	
+	
+	
+	public Member(String id, String name, String password) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.password = password;
+	}
 	public String getId() {
 		return id;
 	}
