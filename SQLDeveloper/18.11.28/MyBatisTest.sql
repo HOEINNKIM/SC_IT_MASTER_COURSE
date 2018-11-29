@@ -1,0 +1,41 @@
+--회원 테이블(부모 테이블)
+CREATE TABLE USERINFO(
+ID VARCHAR2(20) PRIMARY KEY, --회원 ID
+NAME VARCHAR2(20) NOT NULL,
+GENDER CHAR(1) DEFAULT 'M'  --성별 M: 남자, F: 여자
+);
+
+--회원 정보 테이블(자식 테이블)
+CREATE TABLE USERADDR(
+ID VARCHAR2(20) UNIQUE,  --회원 ID FK
+PHONE VARCHAR2(50) NOT NULL,  --전화번호
+ADDRESS VARCHAR2(100) NOT NULL,  --주소
+CONSTRAINT USERADDR_FK FOREIGN KEY(ID)
+REFERENCES USERINFO(ID) ON DELETE CASCADE);
+
+--샘플
+INSERT INTO USERINFO VALUES('AAA', '기뫼인', 'M');
+INSERT INTO USERINFO VALUES('BBB', '기뫄인', 'F');
+INSERT INTO USERINFO VALUES('CCC', '기모이', 'F');
+INSERT INTO USERADDR VALUES('AAA', '010-0000-1111', '서울시 양천구 신월동');
+INSERT INTO USERADDR VALUES('BBB', '010-8312-1234', '서웅시 잉천구 심상동');
+COMMIT;
+
+SELECT * FROM USERINFO;
+SELECT * FROM USERADDR;
+SELECT * FROM USERINFO LEFT OUTER JOIN USERADDR USING(ID);
+
+SELECT 
+i.id
+ , i.name
+ , decode(i.gender,'M','남자','F','여자',' ') gender
+ , nvl(a.phone, ' ') phone
+ , nvl(a.address, ' ') address
+
+FROM USERINFO i, USERADDR a 
+
+where i.id = a.id(+);
+commit;
+
+
+

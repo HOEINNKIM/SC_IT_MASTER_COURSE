@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="MyBatisTest3/src"/>
+	<classpathentry kind="lib" path="MyBatisTest3/lib/mybatis-3.2.8.jar"/>
+	<classpathentry kind="lib" path="MyBatisTest3/lib/ojdbc6.jar"/>
+	<classpathentry kind="output" path="MyBatisTest3/bin"/>
+</classpath>
