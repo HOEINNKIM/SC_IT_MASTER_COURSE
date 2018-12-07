@@ -15,4 +15,6 @@ public interface UserMapper {
 	public int insertAddress(User user);
 	//회원 목록 	
 	public ArrayList<User> listUser();
+	//회원 정보 삭제
+	public int deleteUser(String id);
 }

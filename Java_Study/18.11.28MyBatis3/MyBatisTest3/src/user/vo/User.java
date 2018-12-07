@@ -1,16 +1,18 @@
 package user.vo;
 
-//È¸¿øÁ¤º¸ VO
+//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ VO
 public class User {
-	private String id;			//È¸¿ø ID
-	private String name;		//ÀÛ¼ºÀÚ ÀÌ¸§
-	private String gender;		//¼ºº°
-	private String phone;		//ÀüÈ­¹øÈ£
-	private String address;		//ÁÖ¼Ò
+	private String id;			//È¸ï¿½ï¿½ ID
+	private String name;		//ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
+	private String gender;		//ï¿½ï¿½ï¿½ï¿½
+	private String phone;		//ï¿½ï¿½È­ï¿½ï¿½È£
+	private String address;		//ï¿½Ö¼ï¿½
 	
 	public User() {
 	}
 
+	
+	
 	public User(String id, String name, String gender, String phone, String address) {
 		this.id = id;
 		this.name = name;

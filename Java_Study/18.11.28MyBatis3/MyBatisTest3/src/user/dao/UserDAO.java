@@ -57,4 +57,27 @@ public class UserDAO {
 		return list;
 	}
 
+	public boolean deleteUser(String id) {
+		SqlSession session = null;
+		int cnt = 0;
+		
+		try {
+			session = factory.openSession();
+			UserMapper mapper = session.getMapper(UserMapper.class);
+			cnt = mapper.deleteUser(id);			
+			session.commit();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			if (session != null) session.close();
+		}
+		
+		if (cnt == 0) return false;
+		else return true;
+		
+	}
+	
+	
 }

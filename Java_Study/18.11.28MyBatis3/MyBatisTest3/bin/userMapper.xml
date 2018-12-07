@@ -34,6 +34,12 @@ values (
 )
 </insert>
 
+<!-- 회원 정보 삭제 -->
+<delete id="deleteUser" parameterType="String">
+	delete from userInfo where id = #{id}
+</delete>
+
+
 <!-- 전체 회원 목록 -->
 <select id="listUser" resultType="User">
 select
@@ -48,5 +54,6 @@ where
 	i.id = a.id(+)
 order by i.id
 </select>
+
 
 </mapper>

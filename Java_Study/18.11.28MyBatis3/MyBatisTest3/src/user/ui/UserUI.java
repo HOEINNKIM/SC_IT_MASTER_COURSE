@@ -42,7 +42,11 @@ public class UserUI {
 				case 2: 
 					list();
 					break;
-					
+				
+				//회원 정보 삭제
+				case 3:
+					delete();
+					break;
 				// 프로그램을 종료한다
 				case 9: 
 					System.out.println("프로그램을 종료합니다.");
@@ -56,6 +60,19 @@ public class UserUI {
 	
 
 	
+	private void delete() {
+		System.out.print("삭제할 아이디를 입력하세요 : ");
+		String id = sc.next();
+		boolean check = dao.deleteUser(id);
+		if(check) {
+			System.out.println("삭제 성공했습니다.");
+		} else {
+			System.out.println("삭제 실패했습니다.");
+		}		
+	}
+
+
+
 	/**
 	 * 메인 메뉴를 출력한다.
 	 * */
@@ -63,6 +80,7 @@ public class UserUI {
 		System.out.println("[ 회원 관리 ]");
 		System.out.println("1. 회원정보 등록");
 		System.out.println("2. 전체 회원 목록");
+		System.out.println("3. id로 회원 삭제");
 		System.out.println("9. 프로그램 종료");
 		System.out.print("* 메뉴 번호를 선택하세요 > ");	
 	}
