@@ -2,9 +2,60 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>선택자의 우선순위</title>
+
+<style>
+	.box {
+		width: 1000px;
+		background-color: pink;
+		border : 1px solid black;
+		
+	/*보통 크기, 스타일, 색상의 순으로 쓴다. */
+	}
+	
+	#hello {
+		width: 1000px;
+		background-color: red;
+	}
+	
+	.text_wayne {
+		width: 500px;
+		background-color: violet;
+	}
+	
+	#white {
+		color: yellow;
+	}
+</style>
+
 </head>
 <body>
 
+	<!-- 1. 선택자의 우선순위
+			* 선택자 태그선택자 < 클래스 선택자 < id선택자
+			클래스(.) 아이디(#)의 네이밍 방법
+			- 내 마음대로
+			- 영 소문자로 시작
+			- 영 대소문자와 숫자 _, - 특수기호와 조합하여 사용
+			- 한글, 공백, 속성명, 태그명 사용x -->
+
+	<h1>선택자</h1>
+	<div class="box">
+		<p>첫 번째 문단 영역입니다.</p>
+		<p>두 번째 문단 영역입니다.</p>
+		<p>세 번째 문단 영역입니다.</p>
+		<p>네 번째 문단 영역입니다.</p>
+		<p>다섯 번째 문단 영역입니다.</p>
+	</div>
+	<div id="hello">
+		<p id="white">첫 번째 문단 영역입니다.</p>
+		<p>두 번째 문단 영역입니다.</p>
+		<p>세 번째 문단 영역입니다.</p>
+		<p>네 번째 문단 영역입니다.</p>
+		<p>다섯 번째 문단 영역입니다.</p>
+	</div>
+	<div class="text_wayne">
+		<p>허이짜</p>
+	</div>
 </body>
 </html>

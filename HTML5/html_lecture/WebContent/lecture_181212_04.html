@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>float 속성</title>
+	<style>
+	/*
+	float: 띄우다
+	float: left | right
+	
+	주로 헤더 부분의 네비게이션
+	
+	아티클의 섹션을 나눌 때
+	
+	div가 많을 때 화면 조정을 위해.
+	하나하나 div로 설적해서 float로 쓰는 경우가 많음
+	
+	
+	clear - float의 영향으로부터 벗어날 경우
+	clear: left | right | both;
+	*/
+
+	div{
+		width: 200px; height: 200px;	
+		margin: 5px;	
+	}
+	.red{
+		background-color: red;
+		float: left;
+	}
+	.green{
+		background-color: green;
+		float: left;
+	}
+	.blue{
+		background-color: blue;
+		clear: both;
+	}
+	
+	
+	 </style>
+</head>
+<body>
+	<div class="red"></div>
+	<div class="green"></div>
+	<div class="blue"></div>
+	
+</body>
+</html>

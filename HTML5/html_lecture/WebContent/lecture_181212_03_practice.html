@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>마크업 작성에서 포지셔닝</title>
+	<style>
+
+/* 	Position 속성
+	1. 정적 포지셔닝(static position) - 기본값, 사용 안함
+	2. 상대 포지셔닝 (relative position)
+	3. 절대 포지셔닝(absolute position)
+	4. 절대 포지셔닝 - 화면기준(fixed position) */
+
+	#wrap{
+		position: absolute;
+		width: 1200px; height: 4800px;
+		background-image:url(images/mall.jpg);
+		margin: 0 auto;
+	}
+	.menu{
+		position: fixed;
+		width: 121px; height: 205px;
+		top: 300px; left: 1200px; 
+		background-image:url(images/quick-menu.jpg);
+	}
+	
+
+	/*fixed는 화면의 위치를 기준으로 사용한다.*/	
+	 </style>
+</head>
+<body>
+	<div id="wrap">
+		<div class="menu"></div>
+	</div>
+	
+</body>
+</html>

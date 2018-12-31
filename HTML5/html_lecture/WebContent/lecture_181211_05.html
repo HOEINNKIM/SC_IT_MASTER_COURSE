@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>FORM태그들</title>
+	<style>
+	input[type="button"]{
+		background-color: red;
+		width: 10rem;
+		height: 10rem;
+	}
+	input[type="submit"]{
+		background-color: yellow;
+	}
+	input[type="reset"]{
+		background-color: violet;
+	}
+	</style>
+</head>
+<body>
+<!--전송방식
+	method 속성 : 전송 방식 지정
+	- get: 보안↓
+	- post: 보안↑ - 주로 사용
+	name 속성 - 폼의 이름(ex. 발신인), 구분을 위해 사용
+	action : 데이터를 보낼 주소
+	target : <action>에서 지정한 파일 다른창으로 열기
+	
+	<form>태그 안에있는 내용이 한번에 전달되는 내용
+	한번에 전달하고 싶은 내용은 하나의 폼에 넣어야 한다. -->
+	
+	<form>
+	<input type="radio" id="male" name="gender">
+	<label for="male">남성</label>
+	
+	<input type="radio" id="female" name="gender" checked="checked">
+	<label for="female">여성</label>
+	</form>
+	
+	<!--셀렉트박스-->
+	<form>
+		<select>
+		<option>:선택:</option>
+		<option>서울</option>
+		<option>대전</option>
+		<option>부산</option>
+		<option>도쿄</option>
+		</select>
+	</form>
+
+	<!--체크박스-->
+	<form>
+		<input type="checkbox" id="toku1" name="1" checked="checked">
+		<label for="1">무시의 다음반 : 특별반</label>
+		<input type="checkbox" id="toku2" name="2">
+		<label for="2">무시의 다음반 : 특별반</label>
+		<input type="checkbox" id="toku3" name="3">
+		<label for="3">무시의 다음반 : 특별반</label>
+		<input type="checkbox" id="toku4" name="4">
+		<label for="4">무시의 다음반 : 특별반</label>		
+	</form>
+
+	<!-- 복수행이 지원되는 textarea
+	기본값
+	cols(가로값) 20
+	rows(세로값) 2 -->
+	<form>
+		<textarea cols="20" rows="3">일이삼사오육칠팔구십일이삼사오육칠팔구십일</textarea>
+	</form>
+	
+	<!-- 첨부파일 -->
+	<!-- 파일에 대한 정보를 전송하고 싶을 때는 꼭 작성이 필요하다. -->
+	<form enctype="multipart/form-data">
+		<input type="file" name="filelink">
+	</form>
+	
+	<!-- 버튼의 종류
+	submit : 전송 | reset : 초기화 | button : 기능이 없는 버튼 -->
+	<form>
+		<input	type="submit" value="전송"> 
+		<!--value : 화면상 나타나는 버튼 이름  -->
+		<input	type="reset" value="초기화">
+		<input	type="button" value="버튼">		
+	</form>
+</body>
+</html>

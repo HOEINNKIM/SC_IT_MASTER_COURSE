@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>FORM태그들</title>
+	<style>
+	label{
+		cursor: pointer;
+	}
+	caption {
+		font-weight: bold;
+	}
+	th {
+		text-align: left;
+	}
+	#message {
+		width: 200px;
+		height: 150px;
+	}
+	input[type="reset"], input[type="submit"]{
+		color:white;
+		background-color: skyblue;
+		height: 40px;
+	}
+	</style>
+</head>
+<body>
+<form>
+<table>
+	<caption>예약하기</caption>
+	<tr>
+		<th>성별</th>
+		<td>
+			<input type="radio" id="male" name="gender" checked="checked">
+			<label for="male">남성</label>
+			<input type="radio" id="female" name="gender">
+			<label for="female">여성</label>
+		</td>
+	</tr>
+	<tr>
+		<th>성함</th>
+		<td><input></td>
+	</tr>
+	<tr>
+		<th>연락처</th>
+		<td><input></td>
+	</tr>
+	<tr>
+		<th>전달 메세지</th>
+		<td><textarea rows="30" cols="5" id="message"></textarea></td>
+	</tr>
+</table>
+		<input type="submit" value="예약하기">
+		<input type="reset" value="다시작성">	
+</form>
+</body>
+</html>
