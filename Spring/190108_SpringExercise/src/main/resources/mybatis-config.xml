@@ -5,8 +5,10 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.scit.springexercise.VO.Member" alias="Member" />
+		<typeAlias type="com.scit.springexercise.VO.Board" alias="Board" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/MemberMapper.xml" />
+		<mapper resource="mapper/BoardMapper.xml" />
 	</mappers>
 </configuration>

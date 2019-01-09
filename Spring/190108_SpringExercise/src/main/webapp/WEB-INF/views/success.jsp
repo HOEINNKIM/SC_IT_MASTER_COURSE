@@ -12,9 +12,18 @@
 	<c:if test="${sessionScope.member!=null}">
 	<h2>로그인 성공</h2>
 	<h3>${sessionScope.member}님 환영합니다!</h3>	
+	<form action="goBoard" method="post">
+		<input type="submit" value="게시물 작성">
+	</form>	
+	<br>
+	<form action="viewBoard" method="post">
+		<input type="submit" value="게시물 보기">
+	</form>	
+	<br>
 	<form action="logout">
 		<input type="submit" value="LOGOUT">
 	</form>
+	
 	</c:if>
 </body>
 </html>
