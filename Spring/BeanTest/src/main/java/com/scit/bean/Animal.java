@@ -1,0 +1,27 @@
+package com.scit.bean;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class Animal {
+
+	private String name="toto";
+	private String type="dog";
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	@Override
+	public String toString() {
+		return "Animal [name=" + name + ", type=" + type + "]";
+	}
+}

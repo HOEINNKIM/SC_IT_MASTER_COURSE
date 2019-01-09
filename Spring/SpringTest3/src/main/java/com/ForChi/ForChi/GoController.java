@@ -16,34 +16,28 @@ public class GoController {
 		if(clicked.equals("+")) {
 			int result = first1 + second1;
 			model.addAttribute("result", result);
-			return "go";
+			return "home";
 			
 		} else if(clicked.equals("-")) {
 			int result = first1 - second1;
 			model.addAttribute("result", result);
-			return "go";
+			return "home";
 			
 		} else if(clicked.equals("*")) {
 			int result = first1 * second1;
 			model.addAttribute("result", result);
-			return "go";
+			return "home";
 		
 		} else if(clicked.equals("/")) {
 			int result = first1 / second1;
 			model.addAttribute("result", result);
-			return "go";
+			return "home";
 			
 		}
 		
 		String result = "값이 없음";
 		model.addAttribute("result", result);
-		return "go";
-		
-		
-		
-		
-		
-
+		return "home";
 	}
 	
 }
