@@ -20,6 +20,7 @@ public class BoardDAO {
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 
 		try {
+			System.out.println("boardseq : " + board.getBoardSeq());
 			result = mapper.insertBoard(board);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -8,6 +8,9 @@
 </head>
 <body>
 
+
+	<!-- 인서드와 업데이트를 수행할 때
+	폼의 액션을 가지고 c의 if문을 사용하여 action과 메서드를 바꿔 설정한 후 아래 내용은 그대로 쓰면 된다.-->
 	<form action="insertBoard" method="post">
 	<table>
 	<tr><td>제목 : <input type="text" name="boardTitle" value="${board.boardTitle}"></td></tr>
