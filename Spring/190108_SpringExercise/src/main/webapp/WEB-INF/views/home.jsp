@@ -14,6 +14,11 @@
 	<button>Login</button>
 	</form>
 	
+	
+	<!-- a태그를 사용해서도 action을 전달할 수 있다. -->
+	<!-- <a href="loginCheck?param=asdfeqwer"">로그인</a> -->
+	
+	
 	<form action = "signIn" method="post">
 	<button>SignIn</button>
 	</form>

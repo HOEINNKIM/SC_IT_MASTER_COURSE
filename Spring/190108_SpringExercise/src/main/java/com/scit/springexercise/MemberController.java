@@ -40,14 +40,14 @@ public class MemberController {
 	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
 	public String login(Member member, Model model, HttpSession session) {
 
-		Member memList = null;
-		memList = dao.loginCheck(member);
-		System.out.println(memList);
-		if (memList == null) {
+		Member memberX = null;
+		memberX = dao.loginCheck(member);
+		
+		if (memberX == null) {
 			model.addAttribute("warning", "에러가 발생했습니다. 콘솔을 확인하세요.");
 			return "home";
 		} else {
-			session.setAttribute("member", memList);
+			session.setAttribute("member", memberX);
 			return "success";
 		}
 	}

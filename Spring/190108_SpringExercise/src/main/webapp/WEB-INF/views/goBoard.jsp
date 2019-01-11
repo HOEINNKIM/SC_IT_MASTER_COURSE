@@ -9,10 +9,11 @@
 <body>
 
 	<form action="insertBoard" method="post">
-		제목 : <input type="text" name="boardTitle">
-		<br>
-		내용 : <input type="text" name="boardContent">
-		<br>
+	<table>
+	<tr><td>제목 : <input type="text" name="boardTitle" value="${board.boardTitle}"></td></tr>
+	<tr><td>내용 : <TextArea name="boardContent" rows="10" cols="23">${board.boardContent}</TextArea></td></tr>
+	<input type=hidden name="boardSeq" value="${board.boardSeq}">	
+	</table>
 		<button>작성하기</button>
 	</form>
 </body>

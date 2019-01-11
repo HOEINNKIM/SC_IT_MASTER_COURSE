@@ -26,5 +26,77 @@
 	)
 	
 	</insert>
+	
+	<select id="selectBoard" resultType="Board">
+	
+	SELECT 
+	BOARDSEQ
+	,ID
+	,BOARDTITLE
+	,BOARDCONTENT
+	,HITCOUNT
+	,INDATE
+	
+	FROM
+	BOARDINFO
+	
+	ORDER BY
+	INDATE ASC
+	</select>
+	
+	<select id="boardDetail" parameterType="String" resultType="Board">
+	
+	SELECT 
+	BOARDSEQ
+	,ID
+	,BOARDTITLE
+	,BOARDCONTENT
+	,HITCOUNT
+	,INDATE
+	
+	FROM
+	BOARDINFO
+	
+	WHERE
+	BOARDSEQ=#{boardSeq}
 		
+	</select>
+		
+	<update id="addHitCount" parameterType="String">
+	
+	UPDATE
+	BOARDINFO
+	
+	SET
+	HITCOUNT = HITCOUNT + 1
+	
+	WHERE
+	BOARDSEQ = #{boardSeq}
+	</update>	
+	
+	<delete id="deleteBoard" parameterType="Board">
+	
+	DELETE FROM 
+	BOARDINFO 
+	
+	WHERE 
+	ID=#{id} 
+	AND
+	BOARDSEQ= #{boardSeq}
+	
+	</delete>
+	
+	<update id="updateBoard" parameterType="Board">
+	
+	UPDATE
+	BOARDINFO
+	
+	SET
+	BOARDTITLE = #{boardTitle},
+	BOARDCONTENT = #{boardContent}
+	
+	WHERE
+	BOARDSEQ = #{boardSeq}
+	</update>
+	
 </mapper>
