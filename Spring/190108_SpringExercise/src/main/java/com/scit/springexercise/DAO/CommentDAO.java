@@ -45,5 +45,18 @@ public class CommentDAO {
 		return commList;
 
 	}
+
+	public void updateComment(Comment comment) {
+		
+		CommentMapper mapper = sqlSession.getMapper(CommentMapper.class);
+
+		try {
+			mapper.updateComment(comment);
+		} catch (Exception e) {
+			e.printStackTrace();
+		
+		}
+
+	}
 	
 }

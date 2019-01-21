@@ -40,17 +40,45 @@
 	</form>
 	</div>
 
-	<form action = "insertComment">
+
+	<form action = "insertComment" method="post">
 	<input type="text" name="comments">
-	<input type="hidden" name = "id" value="${sessionScope.member.id}">
+	<!--<input type="hidden" name = "id" value="${sessionScope.member.id}"> -->
 	<input type="hidden" name = "boardSeq" value="${board.boardSeq}">
-	<input type=hidden name="commentSeq" value="">
+	<!--<input type=hidden name="commentSeq" value=""> -->
 	
 	<button>댓글달기</button>
 	</form>
 	
 	</c:if>	
 
+	<c:forEach var="comment" items="${commentList}">
+		<tr>
+			<td>${comment.id} : </td>
+			<td>${comment.comments} </td>
+			<td>${comment.inDate}</td>
+			<td>
+
+			<!-- 댓글의 기본키로 댓글을 삭제 하기 위해,
+			삭제 후에도 이 페이지에 남기 위해
+			두 값을 전달한다. -->
+			<!-- 헤더는 겟, 바디는 포스트
+			http패킷에 대해서 찾아볼 것 -->
+			<c:if test="${sessionScope.member.id==comment.id}">
+			<c:if test="${comment.comments!='(삭제된 덧글입니다.)'}">
+			<form action="deleteComment" method="post">
+			<input type="hidden" name="commentSeq" value="${comment.commentSeq}">
+			<input type="hidden" name="boardSeq" value="${board.boardSeq}">
+			<input type="submit" value="삭제">
+			</form>			
+			</c:if>
+			</c:if>
+			</td>
+			
+			<br>
+		</tr>	
+	</c:forEach>
+	
 	
 
 </body>

@@ -22,7 +22,7 @@ import com.scit.springexercise.VO.Member;
 @Controller
 public class CommentController {
 
-	@Autowired
+	/*@Autowired
 	SqlSession sqlSession;
 	
 	@Autowired
@@ -59,5 +59,5 @@ public class CommentController {
 	
 		return "boardDetail";
 
-	}
+	}*/
 }

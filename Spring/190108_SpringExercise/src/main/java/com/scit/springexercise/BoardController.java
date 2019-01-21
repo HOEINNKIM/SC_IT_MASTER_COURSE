@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.scit.springexercise.DAO.BoardDAO;
+import com.scit.springexercise.DAO.CommentDAO;
 import com.scit.springexercise.VO.Board;
+import com.scit.springexercise.VO.Comment;
 import com.scit.springexercise.VO.Member;
 
 @Controller
@@ -23,6 +25,9 @@ public class BoardController {
 	
 	@Autowired
 	BoardDAO dao;
+	
+	@Autowired
+	CommentDAO dao2;
 	
 	@RequestMapping(value="/goBoard", method=RequestMethod.POST)
 	public String goBoard(HttpSession session, Model model) {
@@ -106,7 +111,7 @@ public class BoardController {
 		result = dao.boardDetail(boardSeq);
 		
 		model.addAttribute("board", result);		
-		
+		selectComment(model, result.getBoardSeq());		
 		return "boardDetail";
 	}
 	
@@ -144,4 +149,51 @@ public class BoardController {
 			return "goBoard";
 		}
 	}
+	
+	@RequestMapping(value = "/insertComment", method = RequestMethod.POST)
+	public String insertComment(HttpSession session, Comment comment, Model model) {
+
+		int result = 0;
+		if(session.getAttribute("member")==null) {
+			model.addAttribute("warningSession", "세션에 등록된 로그인 정보가 없습니다. 다시 로그인하세요.");
+			return "signIn";
+		} 
+		Member member = (Member)session.getAttribute("member");
+		comment.setId(member.getId());
+		result = dao2.insertComment(comment);
+		
+		
+		
+		Board result2 = dao.boardDetail(comment.getBoardSeq()+"");
+		model.addAttribute("board", result2);
+		selectComment(model, result2.getBoardSeq());
+		return "boardDetail";
+	}
+	
+	
+	public void selectComment(Model model, String boardSeq) {
+		
+		ArrayList<Comment> result;
+		result = dao2.selectComment(boardSeq);
+		model.addAttribute("commentList", result);
+		
+		
+	}
+	
+	@RequestMapping(value = "/deleteComment", method = RequestMethod.POST)
+	public String deleteComment(HttpSession session, Comment comment, Model model) {
+
+		int result = 0;
+		if(session.getAttribute("member")==null) {
+			model.addAttribute("warningSession", "세션에 등록된 로그인 정보가 없습니다. 다시 로그인하세요.");
+			return "signIn";
+		} 
+		dao2.updateComment(comment);
+		
+		Board result2 = dao.boardDetail(comment.getBoardSeq()+"");
+		model.addAttribute("board", result2);
+		selectComment(model, result2.getBoardSeq());
+		return "boardDetail";
+	}
+	
 }

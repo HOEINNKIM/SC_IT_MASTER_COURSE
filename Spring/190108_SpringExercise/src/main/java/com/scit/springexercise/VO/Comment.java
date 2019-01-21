@@ -2,15 +2,15 @@ package com.scit.springexercise.VO;
 
 public class Comment {
 
-	private String commentSeq;
-	private String boardSeq;
+	private int commentSeq;
+	private int boardSeq;
 	private String id;
 	private String comments;
 	private String inDate;
-	private String parentSeq;
+	private int parentSeq;
 	
 	public Comment() {}
-	public Comment(String commentSeq, String boardSeq, String id, String comments, String inDate, String parentSeq) {
+	public Comment(int commentSeq, int boardSeq, String id, String comments, String inDate, int parentSeq) {
 		this.commentSeq = commentSeq;
 		this.boardSeq = boardSeq;
 		this.id = id;
@@ -19,19 +19,19 @@ public class Comment {
 		this.parentSeq = parentSeq;
 	}
 	
-	public String getCommentSeq() {
+	public int getCommentSeq() {
 		return commentSeq;
 	}
 	
-	public void setCommentSeq(String commentSeq) {
+	public void setCommentSeq(int commentSeq) {
 		this.commentSeq = commentSeq;
 	}
 	
-	public String getBoardSeq() {
+	public int getBoardSeq() {
 		return boardSeq;
 	}
 	
-	public void setBoardSeq(String boardSeq) {
+	public void setBoardSeq(int boardSeq) {
 		this.boardSeq = boardSeq;
 	}
 	
@@ -59,11 +59,11 @@ public class Comment {
 		this.inDate = inDate;
 	}
 	
-	public String getParentSeq() {
+	public int getParentSeq() {
 		return parentSeq;
 	}
 	
-	public void setParentSeq(String parentSeq) {
+	public void setParentSeq(int parentSeq) {
 		this.parentSeq = parentSeq;
 	}
 	

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 게시판 처리 SQL -->
+<mapper namespace="com.fileboard.fileboard.dao.BoardMapper">
+
+	<insert id="insertBoard" parameterType="Board">
+	INSERT INTO
+	BOARDINFO
+	(
+	BOARDSEQ
+	,TITLE
+	,CONTENT
+	,ID
+	,INDATE
+	)
+	VALUES
+	(
+	BOARDSEQ.NEXTVAL
+	,#{title}
+	,#{content}
+	,#{id}
+	,SYSDATE
+	)
+	</insert>
+	
+	<select id="insertFile" parameterType="File">
+	INSERT INTO
+	BOARDFILE
+	(
+	FILESEQ
+	,BOARDSEQ
+	,ORGNAME
+	,NAME
+	)
+	VALUES
+	(
+	FILESEQ.NEXTVAL
+	,(SELECT MAX(BOARDSEQ) FROM BOARDINFO)
+	,#{orgname}
+	,#{name}
+	)
+	</select> 
+
+	<!-- 시퀀스를 받는 셀렉트문 -->
+	<select id="selectBoard" parameterType="String" resultType="Board">
+	SELECT
+	BOARDSEQ
+	,TITLE
+	,CONTENT
+	,ID
+	,INDATE
+
+	FROM
+	BOARDINFO
+	
+	WHERE
+	BOARDSEQ=#{boardSeq}	
+	</select>
+	
+	<select id="selectAllBoard" resultType="Board">
+	SELECT
+	BOARDSEQ
+	,TITLE
+	,CONTENT
+	,ID
+	,INDATE
+
+	FROM
+	BOARDINFO	
+	
+	ORDER BY
+	INDATE DESC
+	</select>
+	
+	<select id="selectFile" parameterType="File" resultType="File">
+	SELECT
+	FILESEQ
+	,BOARDSEQ
+	,ORGNAME
+	,NAME
+	
+	FROM 
+	BOARDFILE
+	
+	WHERE
+	BOARDSEQ=#{boardSeq}
+	</select>
+
+	<select id="totalCount" resultType="int">
+	
+	SELECT
+		COUNT(BOARDSEQ)
+	FROM
+		BOARDINFO
+	</select>
+
+</mapper>
