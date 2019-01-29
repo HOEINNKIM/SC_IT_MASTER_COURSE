@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 게시판 처리 SQL -->
+<mapper namespace="com.supermarket.supermarket.DAO.AdminMapper">
+
+	
+	<select id="adminLogin" parameterType="Admin" resultType="Admin">
+	
+	SELECT
+	ADMINID, ADMINPW
+	
+	FROM
+	ADMIN
+	
+	WHERE
+	ADMINID = #{adminId}
+	AND
+	ADMINPW = #{adminPw}
+
+	</select>
+	
+	<select id="selectAllCustomer" resultType="Customer">
+	
+	
+	SELECT
+	CUSTOMERID
+	, CUSTOMERPW
+	, NAME 
+	, PHONE
+	, BIRTHDATE
+	, ADDRESS
+	, INDATE
+	
+	FROM
+	CUSTOMER
+		
+	ORDER BY
+	INDATE DESC
+	</select>
+
+	<insert id="insertProduct" parameterType="Product">
+	
+	INSERT INTO
+	PRODUCT(
+	
+	PRODUCTSEQ
+	,NAME
+	,QUANTITY
+	,PRICE
+	,COMMENTS
+	,INDATE
+	
+	) VALUES (
+	
+	PRODUCTSEQ.NEXTVAL
+	, #{name}
+	, #{quantity}
+	, #{price}
+	, #{comments}
+	, SYSDATE	
+	
+	)
+	
+	</insert>
+	
+	<select id="selectAllProduct" parameterType="String" resultType="Product">
+	
+	SELECT	
+	PRODUCTSEQ
+	,NAME
+	,QUANTITY
+	,PRICE
+	,COMMENTS
+	,INDATE
+	
+	FROM
+	PRODUCT
+
+	<if test="_parameter!=null">
+	WHERE
+	NAME LIKE '%' || #{parameter} || '%'
+	</if>
+	
+	ORDER BY
+	INDATE DESC
+	
+	</select>
+	
+	<select id="countProduct" resultType="int" parameterType="String">
+	
+	SELECT	
+	COUNT(PRODUCTSEQ)
+	
+	FROM
+	PRODUCT
+	<if test="_parameter!=null">
+	WHERE
+	NAME LIKE '%' || #{parameter} || '%'
+	</if>
+	
+	</select>
+	
+	<select id="selectProduct" parameterType="Product" resultType="Product">
+	
+	SELECT	
+	PRODUCTSEQ
+	,NAME
+	,QUANTITY
+	,PRICE
+	,COMMENTS
+	,INDATE
+	
+	FROM
+	PRODUCT
+	
+	WHERE
+	PRODUCTSEQ=#{productSeq}
+		
+	</select>
+	
+	<update id="updateProduct" parameterType="Product">
+	
+	UPDATE
+	PRODUCT
+	
+	SET
+	NAME = #{name}
+	,QUANTITY = #{quantity}
+	,PRICE = #{price}
+	,COMMENTS = #{comments}
+	,INDATE = SYSDATE
+	
+	WHERE	
+	PRODUCTSEQ = #{productSeq}
+	
+	</update>
+
+</mapper>

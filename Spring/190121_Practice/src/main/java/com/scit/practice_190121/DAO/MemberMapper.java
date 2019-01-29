@@ -1,6 +1,6 @@
 package com.scit.practice_190121.DAO;
 
-import com.scit.practice_190121_VO.Member;
+import com.scit.practice_190121.VO.Member;
 
 public interface MemberMapper {
 

@@ -18,12 +18,14 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fileboard.fileboard.dao.BoardDAO;
 import com.fileboard.fileboard.util.PageNavigator;
 import com.fileboard.fileboard.vo.Board;
 import com.fileboard.fileboard.vo.BoardFile;
+
 
 @Controller
 public class BoardController {
@@ -34,8 +36,6 @@ public class BoardController {
 	private static final String UPLOADPATH="C:/upload/";
 	private int boardPerPage = 5;
 	private int pagePerGroup = 3;
-	
-	
 	
 	@RequestMapping(value = "/boardWrite", method = { RequestMethod.GET, RequestMethod.POST })
 	public String boardWrite() {
@@ -58,15 +58,23 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/board", method = { RequestMethod.GET, RequestMethod.POST })
-	public String board(Model model, int page) {
-
-		System.out.println("!!!!!!!!");
-		System.out.println(page + "!!!!!!");
-		int totalCount = dao.totalCount();
+	public String board(Model model, 
+			@RequestParam(value="page", defaultValue="1") int page,
+			@RequestParam(value="search", defaultValue="") String search) {
+		
+		//RequestParam()을 통해서 파라미터값이 들어오지 않았을 경우에 1을 줄 수 있다.
+		
+		// 1. jsp에서 단어와 페이지를 같이 넘길 수 있게 처리할 것
+		// 2. 번호만 누른다고 할 것이 아니라, 자바스크팁르를 통해 폼 하단으로 보낼 수 있게 처리한다.
+		// requestParam으로 처리해준 후
+		// 3. search를 파라미터로 포함하여 mapper로 넘겨준다.
+		// mapper에서 totalcount, selectAll mapper에 조작을 해준다.
+		
+		int totalCount = dao.totalCount(search);
 		
 		PageNavigator pn = new PageNavigator(boardPerPage, pagePerGroup, page, totalCount);
 		
-		ArrayList<Board> bList = dao.selectAllBoard(pn);		
+		ArrayList<Board> bList = dao.selectAllBoard(pn, search);		
 		model.addAttribute("bList", bList);
 		model.addAttribute("navi", pn);
 		
@@ -74,7 +82,7 @@ public class BoardController {
 	
 	}
 	
-	@RequestMapping(value = "/writeContent", method =RequestMethod.POST)
+	@RequestMapping(value = "/writeContent", method = RequestMethod.POST)
 	public String writeContent(HttpSession session,Board board, MultipartFile files) {
 		
 		//다중 첨부를 하는 방법
@@ -112,7 +120,7 @@ public class BoardController {
 		return "redirect:/board?page=1";
 	}
 	
-	@RequestMapping(value = "/download", method =RequestMethod.GET)
+	@RequestMapping(value = "/download", method = RequestMethod.GET)
 	public void download(HttpServletResponse response,String boardSeq) {
 		
 		//1. 파일리스트 가져오기
@@ -146,5 +154,5 @@ public class BoardController {
 			e.printStackTrace();
 		}
 	}	
-		
+	
 }

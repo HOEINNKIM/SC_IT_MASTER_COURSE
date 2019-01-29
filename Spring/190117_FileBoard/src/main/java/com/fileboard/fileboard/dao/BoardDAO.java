@@ -25,7 +25,6 @@ public class BoardDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 	public void insertFile(BoardFile file) {
@@ -36,11 +35,9 @@ public class BoardDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
-	public ArrayList<Board> selectAllBoard(PageNavigator pn) {
-
+	public ArrayList<Board> selectAllBoard(PageNavigator pn, String search) {
 		
 		ArrayList<Board> result = null;
 		
@@ -50,13 +47,12 @@ public class BoardDAO {
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 				
 		try {
-			result = mapper.selectAllBoard(rb);
+			result = mapper.selectAllBoard(rb, search);
 		} catch(Exception e) {
 			e.printStackTrace();
 			return result;
 		}
 		return result;
-		
 	}
 
 	public Board selectBoard(String boardSeq) {
@@ -71,7 +67,6 @@ public class BoardDAO {
 			return result;
 		}
 		return result;
-		
 	}
 
 	public ArrayList<BoardFile> selectFile(String boardSeq) {
@@ -86,21 +81,19 @@ public class BoardDAO {
 			return result;
 		}
 		return result;
-		
 	}	
 	
-	public int totalCount() {
+	public int totalCount(String search) {
 
 		int result = 0;
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 				
 		try {
-			result = mapper.totalCount();
+			result = mapper.totalCount(search);
 		} catch(Exception e) {
 			e.printStackTrace();
 			return result;
 		}
-		return result;
-		
+		return result;		
 	}	
 }

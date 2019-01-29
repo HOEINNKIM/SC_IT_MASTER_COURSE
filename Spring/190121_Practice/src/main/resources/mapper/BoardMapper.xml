@@ -6,15 +6,143 @@
 <!-- 게시판 처리 SQL -->
 <mapper namespace="com.scit.practice_190121.DAO.BoardMapper">
 
-	<select id="selectBoard" resultType="Board">
-	
-	 SELECT
-	 BOARDSEQ
-	 , TITLE
-	 , CONTENT
-	 
-	 FROM
-	 PRACTICEBOARD
-	</select>
+	<insert id="insertBoard" parameterType = "Board" >
+		
+		INSERT INTO PRACTICEBOARD(
+		BOARDSEQ
+		,TITLE
+		,CONTENT
+		,ORGNAME
+		,FILENAME
+		,INDATE
 
+		) VALUES(
+		BOARDSEQ.NEXTVAL
+		,#{title}
+		,#{content}
+		,#{orgName}
+		,#{fileName}
+		,SYSDATE		
+		)
+		
+	</insert>
+	
+	<select id="selectAllBoard" resultType="Board">
+	
+	SELECT 
+		BOARDSEQ
+		,TITLE
+		,CONTENT
+		,ORGNAME
+		,FILENAME
+		,INDATE
+	
+	FROM
+	PRACTICEBOARD
+	
+	<if test="_parameter!=null">
+	WHERE
+		TITLE LIKE '%'||#{_parameter}||'%'
+	</if>
+	
+	ORDER BY
+	BOARDSEQ ASC
+	
+	</select>
+	
+	<select id="selectBoard" parameterType="String" resultType="Board">
+	
+	SELECT 
+		BOARDSEQ
+		,TITLE
+		,CONTENT
+		,ORGNAME
+		,FILENAME
+		,INDATE
+		
+	FROM
+	PRACTICEBOARD
+	
+	WHERE
+	BOARDSEQ = #{boardSeq}
+
+	</select>
+	
+	<insert id="insertComment" parameterType="Comment">
+	
+	INSERT INTO
+	PRACTICECOMMENT(
+	BOARDSEQ
+	,COMMSEQ 
+	,ID
+	,COMMENTS
+	,INDATE
+	) VALUES (
+	#{boardSeq}
+	,COMMSEQ.NEXTVAL
+	,#{id}
+	,#{comments}
+	, SYSDATE
+	)
+		
+	</insert>
+	
+	<select id="selectComment" parameterType="String" resultType="Comment">
+	
+	SELECT
+	BOARDSEQ
+	,COMMSEQ 
+	,ID
+	,COMMENTS
+	,INDATE
+	
+	FROM
+	PRACTICECOMMENT
+
+	WHERE
+	BOARDSEQ=#{boardSeq}
+	
+	ORDER BY
+	COMMSEQ ASC
+	</select>
+	
+	<update id="updateWrite" parameterType="Board">
+	
+	UPDATE
+	PRACTICEBOARD
+	
+	SET
+	TITLE = #{title}
+	,CONTENT = #{content}
+	,INDATE = SYSDATE
+
+	WHERE
+	BOARDSEQ = #{boardSeq}
+	
+	</update>
+	
+	<delete id="deleteWrite" parameterType="String">
+	
+	DELETE FROM
+	PRACTICEBOARD
+	
+	WHERE
+	BOARDSEQ=#{boardSeq}
+	</delete>
+	
+	<select id="countTotal" resultType="int" parameterType="String">
+	
+	SELECT 
+		COUNT(BOARDSEQ)
+	
+	FROM
+		PRACTICEBOARD
+	
+	<if test="_parameter!=null">
+	WHERE
+		TITLE LIKE '%'||#{search}||'%'
+	</if>
+
+	</select>
+	
 </mapper>

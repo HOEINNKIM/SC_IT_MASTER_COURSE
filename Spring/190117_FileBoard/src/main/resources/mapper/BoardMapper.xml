@@ -60,7 +60,7 @@
 	BOARDSEQ=#{boardSeq}	
 	</select>
 	
-	<select id="selectAllBoard" resultType="Board">
+	<select id="selectAllBoard" resultType="Board" parameterType="String">
 	SELECT
 	BOARDSEQ
 	,TITLE
@@ -70,9 +70,15 @@
 
 	FROM
 	BOARDINFO	
+
+	<if test="_parameter!=null">
+	WHERE
+		TITLE LIKE '%'||#{_parameter}||'%'
+	</if>	
 	
 	ORDER BY
 	INDATE DESC
+	
 	</select>
 	
 	<select id="selectFile" parameterType="File" resultType="File">
@@ -89,12 +95,17 @@
 	BOARDSEQ=#{boardSeq}
 	</select>
 
-	<select id="totalCount" resultType="int">
+	<select id="totalCount" resultType="int" parameterType="String">
 	
 	SELECT
 		COUNT(BOARDSEQ)
 	FROM
 		BOARDINFO
+	<if test="_parameter!=null">
+	WHERE
+		TITLE LIKE '%'||#{_parameter}||'%'
+	</if>	
+	
 	</select>
 
 </mapper>

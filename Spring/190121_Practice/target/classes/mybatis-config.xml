@@ -4,8 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.scit.practice_190121_VO.Member" alias="Member" />
-		<typeAlias type="com.scit.practice_190121_VO.Board" alias="Board" />
+		<typeAlias type="com.scit.practice_190121.VO.Member" alias="Member" />
+		<typeAlias type="com.scit.practice_190121.VO.Board" alias="Board" />
+		<typeAlias type="com.scit.practice_190121.VO.Comment" alias="Comment" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/MemberMapper.xml" />

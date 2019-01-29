@@ -16,7 +16,7 @@ public interface BoardMapper {
 	public void insertFile(BoardFile file);
 
 	//모든 게시글 선택
-	public ArrayList<Board> selectAllBoard(RowBounds rb);
+	public ArrayList<Board> selectAllBoard(RowBounds rb, String search);
 
 	//시퀀스에 맞는 게시글 선택
 	public Board selectBoard(String boardSeq);
@@ -25,5 +25,5 @@ public interface BoardMapper {
 	public ArrayList<BoardFile> selectFile(String boardSeq);
 
 	//전체 보드 갯수 확인
-	public int totalCount();
+	public int totalCount(String search);
 }

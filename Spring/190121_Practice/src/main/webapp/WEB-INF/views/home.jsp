@@ -26,6 +26,9 @@
 	<form action="Board">
 		<button>게시판 보기</button>
 	</form>
+	<form action="logout">
+		<button>로그아웃</button>
+	</form>
 	</c:if>
 	
 </body>

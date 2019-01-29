@@ -4,7 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.scit.practice_190121_VO.Member;
+import com.scit.practice_190121.VO.Member;
 
 @Repository
 public class MemberDAO {

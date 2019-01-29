@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 게시판 처리 SQL -->
+<mapper namespace="com.supermarket.supermarket.DAO.CustomerMapper">
+
+	<insert id="insertCustomer" parameterType="Customer">
+	
+	INSERT INTO CUSTOMER(
+	
+	CUSTOMERID
+	, CUSTOMERPW
+	, NAME
+	, PHONE
+	, BIRTHDATE
+	, ADDRESS
+	, INDATE	
+	
+	) VALUES (
+	
+	#{customerId}
+	,#{customerPw}
+	,#{name}
+	,#{phone}
+	,#{birthDate}
+	,#{address}
+	, SYSDATE
+		
+	)
+	</insert>
+	
+	<select id="loginCustomer" parameterType="Customer" resultType="Customer">
+	
+	SELECT
+	CUSTOMERID, CUSTOMERPW
+	
+	FROM
+	CUSTOMER
+	
+	WHERE
+	CUSTOMERID = #{customerId}
+	AND
+	CUSTOMERPW = #{customerPw}
+	</select>
+
+	<select id="listProduct" resultType="Product">
+	
+	SELECT	
+	PRODUCTSEQ
+	,NAME
+	,QUANTITY
+	,PRICE
+	,COMMENTS
+	,INDATE
+	
+	FROM
+	PRODUCT
+	
+	ORDER BY
+	INDATE DESC
+	
+	</select>
+	
+	<insert id="insertSold" parameterType="Sold">
+	
+	INSERT INTO
+	SOLD(
+	
+	SOLDSEQ
+	, CUSTOMERID
+	, PRODUCTSEQ
+	, INDATE
+	, QUANTITY
+
+	) VALUES(
+	SOLDSEQ.NEXTVAL
+	, #{customerId}
+	, #{productSeq}
+	, SYSDATE
+	, #{quantity}
+	)
+	</insert>
+	
+	<update id="subtractQuantity" parameterType="Sold">
+	
+	UPDATE
+	PRODUCT
+	
+	SET
+	QUANTITY = QUANTITY - #{quantity}
+	
+	WHERE
+	PRODUCTSEQ = #{productSeq}
+	</update>
+	
+	<select id="selectSoldById" parameterType="String" resultType="Sold">
+	
+	
+	SELECT
+	CUSTOMERID
+	,PRODUCTSEQ
+	,INDATE
+	,QUANTITY 
+	
+	FROM
+	SOLD
+	
+	WHERE
+	CUSTOMERID=#{customerId}
+	
+	ORDER BY
+	INDATE DESC
+
+	</select>
+	
+</mapper>

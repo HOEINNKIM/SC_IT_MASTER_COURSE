@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.scit.practice_190121.DAO.MemberDAO;
-import com.scit.practice_190121_VO.Member;
+import com.scit.practice_190121.VO.Member;
 
 /**
  * Handles requests for the application home page.
@@ -68,7 +68,12 @@ public class HomeController {
 			System.out.println("2222" + session.getAttribute("loginId")+"1111");
 
 			return "home";
-		}
-				
+		}		
+	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "/home";
 	}
 }

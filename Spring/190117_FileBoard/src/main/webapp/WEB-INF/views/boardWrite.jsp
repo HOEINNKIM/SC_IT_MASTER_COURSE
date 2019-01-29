@@ -15,7 +15,7 @@
 	 <tr><td>내용 :</td>
 	 <td style="width:300px;height:500px;"><textarea name="content" rows="20" cols="20"></textarea></td></tr>
 	 <tr><td>첨부파일 : </td>
-	 <td><input multiple="multiple" type="file" name="files"></td></tr>
+	 <td><input type="file" name="file"></td></tr>
 	 <input type="submit" value="작성하기">
 	 
 	</table>
