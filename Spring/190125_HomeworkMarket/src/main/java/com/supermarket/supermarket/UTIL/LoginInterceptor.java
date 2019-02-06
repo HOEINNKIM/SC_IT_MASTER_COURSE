@@ -14,13 +14,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		
 		HttpSession session = request.getSession();
 		
-		System.out.println(1);
 		if(session.getAttribute("adminId")==null) {
-			System.out.println(2);
 			response.sendRedirect(request.getContextPath() + "/admin/adminHome");
 			return false;			
 		}
-		System.out.println(3);		
 		return super.preHandle(request, response, handler);
 	}
 	

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 게시판 처리 SQL -->
+<mapper namespace="com.practice.chatting.DAO.RoomMapper">
+
+<select id="selectAllRoom" resultType="Room">
+
+	SELECT
+	ROOMSEQ,
+	USERID,
+	NAME,
+	INDATE
+	
+	FROM
+	ROOM
+	
+</select>
+
+
+<select id="selectRoom" parameterType="Room" resultType="Room">
+
+	SELECT
+	ROOMSEQ,
+	USERID,
+	NAME,
+	INDATE
+	
+	FROM
+	ROOM
+	
+	WHERE
+	USERID=#{userId}
+	AND
+	NAME=#{name}
+	
+</select>
+<select id="selectSeq" parameterType="String" resultType="String">
+
+	Select
+	MAX(ROOMSEQ)
+	
+	FROM
+	ROOM
+	
+	WHERE
+	USERID=#{userId}
+
+
+</select>
+
+<select id="selectRoomBySeq" parameterType="String" resultType="Room">
+
+	SELECT
+	ROOMSEQ,
+	USERID,
+	NAME,
+	INDATE
+	
+	FROM
+	ROOM
+	
+	WHERE
+	ROOMSEQ = #{roomSeq}
+
+</select>
+	
+<insert id="insertRoom" parameterType="Room">
+
+	INSERT INTO ROOM(
+	
+	ROOMSEQ,
+	USERID,
+	NAME,
+	INDATE
+	
+	) VALUES (
+	
+	ROOMSEQ.NEXTVAL
+	,#{userId}
+	,#{name}
+	,SYSDATE
+	
+	)
+</insert>
+</mapper>
