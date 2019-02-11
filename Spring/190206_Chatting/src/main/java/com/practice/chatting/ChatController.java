@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.practice.chatting.DAO.ChatDAO;
 import com.practice.chatting.DAO.RoomDAO;
@@ -44,5 +45,11 @@ public class ChatController {
 		return "room";
 	}
 
-
+	@RequestMapping(value = "/selectChat", method = RequestMethod.GET)
+	public @ResponseBody ArrayList<Chat> selectChat(String roomSeq) {
+		ArrayList<Chat> chatList = dao.selectChat(roomSeq);
+		
+		return chatList;
+		
+	}
 }
