@@ -1,0 +1,96 @@
+<html>
+<head>
+
+<title>Firebase Realtime Database Web</title>
+<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDbP5rLbpe6JFedjvFxaI3gM2jm1REFrJ8",
+    authDomain: "web-crawling-6562b.firebaseapp.com",
+    databaseURL: "https://web-crawling-6562b.firebaseio.com",
+    projectId: "web-crawling-6562b",
+    storageBucket: "web-crawling-6562b.appspot.com",
+    messagingSenderId: "407695243177"
+  };
+  firebase.initializeApp(config);
+  </script>
+  <script>
+  var tblUsers = document.getElementById('tbl_users_list');
+	var databaseRef = firebase.database().ref('users/');
+
+	var user_name = document.getElementById('user_name').value;
+	var user_id = document.getElementById('user_id').value;
+	
+	function save_user(){
+		var uid = firebase.database().ref().child('users').push().key;
+
+		var data = {
+			user_id: uid,
+			user_name: user_name
+		}
+
+		var updates = {};
+		updates['/users/' + uid] = data;
+		firebase.database().ref().update(updates);
+
+		alert('saved');
+		reload_page();
+	}	
+	function update_user(){
+		var data = {
+			user_id: uid,
+			user_name: user_name
+
+		}
+
+		var updates = {};
+		updates['/users/' + user_id] = data;
+		firebase.database().ref().update(updates);
+		alert('updated');
+		reload_page();
+
+	}	
+	function delete_user(){
+		firebase.database().ref().child('/users/' + user_id).remove();
+		alert('deleted');
+		reload_page();
+	
+	}
+	function reload_page(){
+		window.location.reload();
+	}	
+  
+  
+</script>
+</head>
+<body>
+	<table>
+	<tr>
+	<td>Id</td>
+	<td><input type="text" name="id" id="user_id"/></td>
+	</tr>
+	<tr>
+	<td>User Name : </td>
+	<td><input type="text" name="user_name" id="user_name"/></td>
+	</tr>
+	<tr>
+	<td colspan="2">
+	<input type="button" value="Save" onClick="save_user()"/>
+	<input type="button" value="Updte" onClick="update_user()"/>
+	<input type="button" value="Delete" onClick="delete_user()"/>
+	</table>
+
+	<h3>Users List</h3>
+
+	<table id="tbl_users_list">
+	<tr>
+		<td>#ID</td>
+		<td>NAME</td>
+	</tr>
+	</table>
+
+</body>
+</html>
+
+

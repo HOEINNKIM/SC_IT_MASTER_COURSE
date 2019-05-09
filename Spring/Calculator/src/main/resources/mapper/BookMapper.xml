@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 게시판 처리 SQL -->
+<mapper namespace="com.practice.calculator.DAO.BookMapper">
+
+	<insert id="insertBoard" parameterType="AccountBook">
+	
+	INSERT INTO ACCOUNTBOOK(
+	
+	ACCOUNTSEQ
+	,ID
+	,TITLE
+	,CONTENT
+	,FLAG
+	,AMOUNT
+	,EVENTDATE
+	,INDATE
+	
+	) VALUES(
+	ACCOUNTSEQ.NEXTVAL
+	,#{id}
+	,#{title}
+	,#{content}
+	,#{flag}
+	,#{amount}
+	,TO_DATE(#{eventdate}, 'YYYY-MM-DD')
+	,SYSDATE
+	)
+	</insert>
+	
+	<select id="selectBoard" parameterType="String" resultType="AccountBook">
+	SELECT	
+	
+	ACCOUNTSEQ
+	,ID
+	,TITLE
+	,CONTENT
+	,FLAG
+	,AMOUNT
+	,EVENTDATE
+	,INDATE
+	
+	FROM
+	ACCOUNTBOOK
+	
+	WHERE
+	ID=#{id}
+	
+	</select>
+
+	<update id="updateReview" parameterType="AccountBook">
+	
+	UPDATE
+	ACCOUNTBOOK
+	
+	SET
+	AMOUNT = #{amount}
+	
+	WHERE
+	ACCOUNTSEQ=#{accountSeq}
+	
+	</update>
+</mapper>

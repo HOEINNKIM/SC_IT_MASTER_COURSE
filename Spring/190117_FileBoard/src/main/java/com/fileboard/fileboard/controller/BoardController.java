@@ -62,13 +62,13 @@ public class BoardController {
 			@RequestParam(value="page", defaultValue="1") int page,
 			@RequestParam(value="search", defaultValue="") String search) {
 		
-		//RequestParam()À» ÅëÇØ¼­ ÆÄ¶ó¹ÌÅÍ°ªÀÌ µé¾î¿ÀÁö ¾Ê¾ÒÀ» °æ¿ì¿¡ 1À» ÁÙ ¼ö ÀÖ´Ù.
+		//RequestParam()ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾ï¿½ï¿½ï¿½ ï¿½ï¿½ì¿¡ 1ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½.
 		
-		// 1. jsp¿¡¼­ ´Ü¾î¿Í ÆäÀÌÁö¸¦ °°ÀÌ ³Ñ±æ ¼ö ÀÖ°Ô Ã³¸®ÇÒ °Í
-		// 2. ¹øÈ£¸¸ ´©¸¥´Ù°í ÇÒ °ÍÀÌ ¾Æ´Ï¶ó, ÀÚ¹Ù½ºÅ©ÆÁ¸£¸¦ ÅëÇØ Æû ÇÏ´ÜÀ¸·Î º¸³¾ ¼ö ÀÖ°Ô Ã³¸®ÇÑ´Ù.
-		// requestParamÀ¸·Î Ã³¸®ÇØÁØ ÈÄ
-		// 3. search¸¦ ÆÄ¶ó¹ÌÅÍ·Î Æ÷ÇÔÇÏ¿© mapper·Î ³Ñ°ÜÁØ´Ù.
-		// mapper¿¡¼­ totalcount, selectAll mapper¿¡ Á¶ÀÛÀ» ÇØÁØ´Ù.
+		// 1. jspï¿½ï¿½ï¿½ï¿½ ï¿½Ü¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ±ï¿½ ï¿½ï¿½ ï¿½Ö°ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+		// 2. ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´Ï¶ï¿½, ï¿½Ú¹Ù½ï¿½Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö°ï¿½ Ã³ï¿½ï¿½ï¿½Ñ´ï¿½.
+		// requestParamï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+		// 3. searchï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ mapperï¿½ï¿½ ï¿½Ñ°ï¿½ï¿½Ø´ï¿½.
+		// mapperï¿½ï¿½ï¿½ï¿½ totalcount, selectAll mapperï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø´ï¿½.
 		
 		int totalCount = dao.totalCount(search);
 		
@@ -85,27 +85,27 @@ public class BoardController {
 	@RequestMapping(value = "/writeContent", method = RequestMethod.POST)
 	public String writeContent(HttpSession session,Board board, MultipartFile files) {
 		
-		//´ÙÁß Ã·ºÎ¸¦ ÇÏ´Â ¹æ¹ý
+		//ï¿½ï¿½ï¿½ï¿½ Ã·ï¿½Î¸ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
 		/*MultipartHttpServletRequest request
 		request.getFile("files");*/
 		
-		//ÇÏ³ªÀÇ ÆÄÀÏ¸¸ ¹Þ´Â¹ý
+		//ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½Þ´Â¹ï¿½
 		board.setId((String)session.getAttribute("loginId"));
 		dao.insertBoard(board);
 		
-		//1) ¿øº»ÆÄÀÏ¸í -> ÀúÀåµÉ ÆÄÀÏ¸í(A.txt -> 2019011813191311.txt)
+		//1) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ -> ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½(A.txt -> 2019011813191311.txt)
 		/*String name="";*/
 		String orgname=files.getOriginalFilename();
-		Date date=new Date();	//ÇöÀç½Ã°£ÀÇ Á¤º¸¸¦ ´ã´Â °´Ã¼
+		Date date=new Date();	//ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddhhmmss");
-		String timename =sdf.format(date);	//ÀúÀåµÉ ÆÄÀÏ¸í -> ex) 20190118132134
+		String timename =sdf.format(date);	//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ -> ex) 20190118132134
 		
-		//È®ÀåÀÚ¸¦ °¡Á®¿À´Â °úÁ¤ A.B.C.txt [A][B][C][txt]
+		//È®ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ A.B.C.txt [A][B][C][txt]
 		String ext = orgname.split("\\.")[orgname.split("\\.").length-1];
 		String name=timename + "." + ext;
 		
 		try {
-			files.transferTo(new File(UPLOADPATH + name));	//ÀúÀåµÉ ÆÄÀÏ¸í
+			files.transferTo(new File(UPLOADPATH + name));	//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½
 		} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -123,11 +123,11 @@ public class BoardController {
 	@RequestMapping(value = "/download", method = RequestMethod.GET)
 	public void download(HttpServletResponse response,String boardSeq) {
 		
-		//1. ÆÄÀÏ¸®½ºÆ® °¡Á®¿À±â
+		//1. ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		ArrayList<BoardFile> fList=dao.selectFile(boardSeq);
 		BoardFile file = fList.get(0);
 		
-		//2. responseÀÇ Çì´õ ¹Ù²Ù±â		
+		//2. responseï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ù²Ù±ï¿½		
 		try {
 			response.setHeader("Content-Disposition", "attachment;filename="+URLEncoder.encode(file.getOrgname(), "utf-8"));
 		} catch (UnsupportedEncodingException e) {
@@ -135,7 +135,7 @@ public class BoardController {
 			e.printStackTrace();
 		}
 	
-		//3. input, outputÀ¸·Î ¿¬°áÇØÁÖ±â
+		//3. input, outputï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½
 		FileInputStream fis;
 		ServletOutputStream sos;
 		

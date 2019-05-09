@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 게시판 처리 SQL -->
+<mapper namespace="com.practice.todolist.DAO.TodoMapper">
+
+	<insert id="insertTodo" parameterType="Todo">
+	
+	INSERT INTO TODO(
+	ID,
+	TITLE,
+	NAME,
+	SEQ,
+	REGDATE	
+	) VALUES(
+	ID.NEXTVAL,
+	#{title},
+	#{name},
+	#{seq},
+	SYSDATE	
+	)
+	</insert>
+	
+	<select id="selectTodo" resultType="Todo">
+	
+	SELECT
+	ID,
+	TITLE,
+	NAME,
+	SEQ,
+	TYPE,
+	TO_CHAR(REGDATE, 'YYYY.MM.DD') AS REGDATE	
+	
+	FROM 
+	TODO
+	
+	WHERE
+	TYPE='TODO'
+	
+	</select>
+	
+	<select id="selectDoing" resultType="Todo">
+	
+	SELECT
+	ID,
+	TITLE,
+	NAME,
+	SEQ,
+	TYPE,
+	TO_CHAR(REGDATE, 'YYYY.MM.DD') AS REGDATE	
+	
+	FROM 
+	TODO
+	
+	WHERE
+	TYPE='DOING'
+	
+	</select>
+	
+	<select id="selectDone" resultType="Todo">
+	
+	SELECT
+	ID,
+	TITLE,
+	NAME,
+	SEQ,
+	TYPE,
+	TO_CHAR(REGDATE, 'YYYY.MM.DD') AS REGDATE	
+	
+	FROM 
+	TODO
+	
+	WHERE
+	TYPE='DONE'
+	
+	</select>
+	
+	<update id="updateTodoById" parameterType="String">
+
+	UPDATE
+	TODO
+	
+	SET
+	TYPE='DOING'	
+
+	WHERE
+	ID=#{id}
+	
+	</update>
+	
+	<update id="updateDoingById" parameterType="String">
+
+	UPDATE
+	TODO
+	
+	SET
+	TYPE='DONE'	
+
+	WHERE
+	ID=#{id}
+	
+	</update>
+	
+	<delete id="deleteDone" parameterType="String">
+	
+	DELETE FROM
+	TODO
+	
+	WHERE
+	ID=#{id}
+	</delete>
+</mapper>
